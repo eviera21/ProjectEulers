@@ -42,8 +42,12 @@ def replaceTillPrime():
             bincounter = list(bin(j))[2:] #uses binary counting to mark which the current changeable digit
             for k in range(len(i)-len(bincounter)): #adds necessary 0s to match the current prime number
                 bincounter = ['0']+bincounter
-            for k in range(10): #prepare family of supposed primes
-                primeFamily.append(digitChanger(i,bincounter,k))
+            if bincounter[0]=='1':
+                for k in range(1,10): #prepare family of supposed primes
+                    primeFamily.append(digitChanger(i,bincounter,k))
+            else:
+                for k in range(10): #prepare family of supposed primes
+                    primeFamily.append(digitChanger(i,bincounter,k))
             print(str(primeFamily)+"\t"+i+"\t"+str(j-1))
             if areEightPrimes(primeFamily): #verifies if the supposed family of primes are actually prime
                 return i
